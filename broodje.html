@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>Genetic Soylent</title>
+    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+
+        <script type="text/javascript" src="GeneticSoylent.js"></script>
+        <script type="text/javascript" src="Recipe.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+
+        <h1>Genetic Soylent - aantal broodjes smos</h1>
+        <p>Find the code at <a href="http://github.com/nick/genetic-soylent">http://github.com/nick/genetic-soylent</a></p>
+		<p>Bereken ook per <a href="portie.html">100g</a>.</p>
+		
+        <div id="table"></div>
+
+        <form class="form-inline pull-right">
+            <label>Population:</label>
+            <input class="population form-control input-sm" type="text" style="width: 50px; text-align: center" value="100" />
+            <label style="margin-left: 20px;">Mutation probability:</label>
+            <input class="mutation-probability form-control" type="text" style="text-align: center; width: 50px" value="0.5" />
+            <label style="margin-left: 20px;">Mutation multiplier:</label>
+            <input class="mutation-multiplier form-control" type="text" style="text-align: center; width: 50px" value="0.1" />
+            <label style="margin-left: 20px;">Death rate:</label>
+            <input class="death-rate form-control input-sm" type="text" style="width: 50px; text-align: center" value="0.3" />
+        </form>
+
+        <form class="form-inline">
+            <label>Generation:</label>
+            <input class="generation form-control input-sm" type="text" style="width: 50px; text-align: center; margin-right: 20px; margin-left: 10px" />
+            <a class="btn btn-primary start-genetic-algorithm" href="#"><i class="icon-play"></i></a>
+            <a class="btn btn-primary pause-genetic-algorithm" href="#" style="display: none;"><i class="icon-pause"></i></a>
+            <a class="btn btn-default step-genetic-algorithm" href="#"><i class="icon-step-forward"></i></a>
+            <a class="btn btn-default reset-genetic-algorithm" href="#"><i class="icon-refresh"></i></a>
+        </form>
+		
+    </div>
+
+    <script type="text/javascript">
+	
+		var ingredients = [
+            { name: 'Wit stokbrood',  	calories: 566,		carbs: 116,		protein: 16.8,	fat: 3.8,	maxAmount: 1  },
+            { name: 'Mayonaise', 		calories: 111.15, 	carbs: 0.375,	protein: 0.255,	fat: 12.3,	maxAmount: 1 },
+            { name: 'Sla',   			calories: 3.3, 		carbs: 0.3, 	protein: 0.39,	fat: 0.06, 	maxAmount: 1  },
+            { name: 'Tomaat',     		calories: 9.5, 		carbs: 1.45, 	protein: 0.5,  	fat: 0.1, 	maxAmount: 1 },
+            { name: 'Gekookt ei',    	calories: 30.8, 	carbs: 0.14,	protein: 2.58,	fat: 2.24, 	maxAmount: 1  },
+			{ name: 'Kaas',    			calories: 76.4, 	carbs: 0, 		protein: 4.9,	fat: 6.4,	maxAmount: 1  },
+			{ name: 'Hesp',    			calories: 30.15, 	carbs: 0.15, 	protein: 3.225,	fat: 1.875,	maxAmount: 0.01  }
+        ];
+
+        var testGeneticSoylent = new GeneticSoylent({
+            ingredients: ingredients,
+            targetNutrients: {
+                calories: 2000,
+                carbs:    250,
+                protein:  85,
+                fat:      65
+            }
+        });
+
+    </script>
+
+</body>
+</html>
